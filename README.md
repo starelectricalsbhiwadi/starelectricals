@@ -16,4 +16,4 @@ Alwar Bypass Rd, opposite Konark's Oasis Gate, Bhiwadi, Milakpur Goojar, Rajasth
 * **Availability:** 24/7 Doorstep Service in Bhiwadi
 
 ## 🌐 Live Website
-[Click here to view our Premium Service Matrix](https://your-username.github.io/starelectricals/)
+[Click here to view our Premium Service Matrix]([Bhiwadi’s Elite Home Appliance Engineering. Specialized in AC, Washing Machine, RO, & Fridge Repair. 24/7 Doorstep Service.](https://starelectricalsbhiwadi.github.io/starelectricals/))
