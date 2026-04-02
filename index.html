@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#010409">
+    
+    <title>Star Electricals | Premium Appliance Engineering Bhiwadi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <style>
+        :root {
+            --primary: #00D1FF;
+            --primary-glow: rgba(0, 209, 255, 0.4);
+            --bg: #010409;
+            --surface: #0d1117;
+            --text: #ffffff;
+            --text-dim: #8b949e;
+            --border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Essential for Mobile Feel */
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; /* Removes blue box on tap */
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Minimalist Premium Nav --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 1.2rem 5%; background: rgba(1, 4, 9, 0.85);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-family: 'Space Grotesk'; font-size: 1.3rem; font-weight: 700; color: var(--primary); text-decoration: none; letter-spacing: -1px; }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; padding: 0 8%;
+            background: radial-gradient(circle at 80% 20%, var(--primary-glow), transparent 45%);
+            position: relative;
+        }
+        .hero-content { max-width: 850px; z-index: 10; }
+        .hero h1 { font-family: 'Space Grotesk'; font-size: clamp(2.5rem, 8vw, 6.5rem); line-height: 0.95; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -2px; }
+        .gradient-text { background: linear-gradient(to right, #fff, var(--primary), #fff); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 5s linear infinite; }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* --- Brand Trust Loop --- */
+        .brand-bar { padding: 2.5rem 0; background: var(--surface); border-top: 1px solid var(--border); overflow: hidden; white-space: nowrap; }
+        .brand-track { display: inline-flex; gap: 4rem; animation: scroll 40s linear infinite; }
+        .brand-track span { color: var(--text-dim); font-size: 1.1rem; font-weight: 800; opacity: 0.3; font-family: 'Space Grotesk'; }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* --- Why Us (App Grid) --- */
+        .why-us { padding: 6rem 5%; background: #000; }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .why-card { 
+            padding: 2rem; border: 1px solid var(--border); border-radius: 20px; 
+            background: rgba(255,255,255,0.01); transition: var(--transition);
+        }
+        .why-card h4 { color: var(--primary); font-family: 'Space Grotesk'; font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .why-card p { color: var(--text-dim); font-size: 0.8rem; }
+
+        /* --- Service Matrix --- */
+        .section-padding { padding: 6rem 5% 10rem; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        
+        .card { 
+            background: var(--surface); border: 1px solid var(--border); 
+            padding: 2.5rem 2rem; border-radius: 30px; transition: var(--transition); 
+            display: flex; flex-direction: column; 
+        }
+        .card:active { transform: scale(0.97); } /* Mobile press effect */
+        .card-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+        
+        /* --- Premium Buttons --- */
+        .price-btn {
+            background: #25D366; color: #fff; text-decoration: none;
+            padding: 1.1rem; border-radius: 16px; font-weight: 800; text-align: center;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: 0.3s; font-size: 0.85rem; margin-top: 1.5rem;
+        }
+
+        /* --- Interactive Map Link Card --- */
+        .map-section { padding: 2rem 5%; }
+        .location-box {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            width: 100%; padding: 4rem 1.5rem; background: var(--surface);
+            border-radius: 30px; border: 1px solid var(--border);
+            text-decoration: none; transition: var(--transition); text-align: center;
+        }
+        .location-box:hover { border-color: var(--primary); }
+        .map-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+        /* --- Floating Action Dock (Mobile/App UI) --- */
+        .dock {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 0.8rem 2rem; border-radius: 100px; border: 1px solid var(--border);
+            display: flex; gap: 2rem; z-index: 2000; box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            width: fit-content; min-width: 320px; justify-content: space-around;
+        }
+        .dock-item { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; }
+
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 768px) {
+            .hero { padding: 0 5%; text-align: center; justify-content: center; }
+            .hero-content { margin-top: 60px; }
+            .section-header h2 { font-size: 2.2rem; }
+            .dock { width: 90%; bottom: 15px; }
+            .nav-address { display: none; } /* Hide on mobile to save space */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">STAR <span>ELECTRICALS</span></a>
+        <div style="font-size: 0.7rem; color: var(--text-dim); font-weight: 800; text-align: right; max-width: 250px; line-height: 1.2;" class="nav-address">
+            Alwar Bypass Rd, Bhiwadi, 301019
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <div style="color: var(--primary); font-weight: 800; margin-bottom: 1rem; letter-spacing: 3px; font-size: 0.7rem;">SINCE 2011 • BHIWADI</div>
+            <h1>Bhiwadi’s Elite <br><span class="gradient-text">Appliance Care.</span></h1>
+            <p style="color: var(--text-dim); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px;">
+                Verified technical support for modern homes. Precision engineering and transparent pricing at your doorstep.
+            </p>
+            <a href="#matrix" style="background: var(--primary); color: #000; padding: 1.1rem 2rem; border-radius: 14px; text-decoration: none; font-weight: 800; display: inline-block;">SERVICE MATRIX</a>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="why-grid">
+            <div class="why-card" data-aos="zoom-in">
+                <h4>Verified Experts</h4>
+                <p>15+ years of operational excellence.</p>
+            </div>
+            <div class="why-card" data-aos="zoom-in" data-aos-delay="100">
+                <h4>OEM Spares</h4>
+                <p>Original manufacturer parts guaranteed.</p>
+            </div>
+            <div class="why-card" data-aos="zoom-in" data-aos-delay="200">
+                <h4>1-Hour ETA</h4>
+                <p>Swift response across Alwar Bypass Rd.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="brand-bar">
+        <div class="brand-track">
+            <span>DAIKIN</span> <span>VOLTAS</span> <span>SAMSUNG</span> <span>LG</span> <span>HITACHI</span> <span>BLUE STAR</span> <span>CROMPTON</span> <span>HAVELLS</span> <span>AO SMITH</span>
+            <span>DAIKIN</span> <span>VOLTAS</span> <span>SAMSUNG</span> <span>LG</span> <span>HITACHI</span> <span>BLUE STAR</span> <span>CROMPTON</span> <span>HAVELLS</span> <span>AO SMITH</span>
+        </div>
+    </div>
+
+    <section id="matrix" class="section-padding">
+        <div class="section-header" data-aos="fade-up">
+            <h2 style="font-family: 'Space Grotesk'; font-size: clamp(2rem, 5vw, 3rem);">Service Portfolio</h2>
+            <p style="color: var(--text-dim); margin-top: 1rem;">Touch a module to inquire about same-day scheduling.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="card" data-aos="fade-up">
+                <span class="card-icon">❄️</span>
+                <h3>AC Systems</h3>
+                <p>High-pressure jet cleaning and PCB repair for all split/window models.</p>
+                <a href="https://wa.me/919667505055?text=I%20want%20to%20know%20the%20price%20and%20time%20for%20AC%20Service." class="price-btn">INQUIRE PRICE</a>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <span class="card-icon">🔥</span>
+                <h3>Geyser Repair</h3>
+                <p>Heating element and thermostat repair for storage/instant geysers.</p>
+                <a href="https://wa.me/919667505055?text=I%20want%20to%20know%20the%20price%20and%20time%20for%20Geyser%20Repair." class="price-btn">INQUIRE PRICE</a>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <span class="card-icon">🌀</span>
+                <h3>Fan Service</h3>
+                <p>Bearing replacement and winding repair for ceiling/exhaust fans.</p>
+                <a href="https://wa.me/919667505055?text=I%20want%20to%20know%20the%20price%20and%20time%20for%20Fan%20Service." class="price-btn">INQUIRE PRICE</a>
+            </div>
+
+            <div class="card" data-aos="fade-up">
+                <span class="card-icon">🧺</span>
+                <h3>Laundry Care</h3>
+                <p>Authorized-grade repair for Front and Top load washing machines.</p>
+                <a href="https://wa.me/919667505055?text=I%20want%20to%20know%20the%20price%20and%20time%20for%20Washing%20Machine%20Repair." class="price-btn">INQUIRE PRICE</a>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <span class="card-icon">🍦</span>
+                <h3>Fridge Repair</h3>
+                <p>Compressor diagnostics and gas refilling for single/double door fridges.</p>
+                <a href="https://wa.me/919667505055?text=I%20want%20to%20know%20the%20price%20and%20time%20for%20Fridge%20Repair." class="price-btn">INQUIRE PRICE</a>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <span class="card-icon">💧</span>
+                <h3>RO Systems</h3>
+                <p>Filter replacement and TDS calibration for pure drinking water.</p>
+                <a href="https://wa.me/919667505055?text=I%20want%20to%20know%20the%20price%20and%20time%20for%20RO%20Service." class="price-btn">INQUIRE PRICE</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section" data-aos="fade-up">
+        <a href="https://www.google.com/maps/place/Star+Electrical/@28.1911029,76.8125417,2962a,13.1y/data=!3m5!1e1!3m3!1sDhJyAwLHKs7VFoixAtbjtw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D90%26panoid%3DDhJyAwLHKs7VFoixAtbjtw%26yaw%3D0!4m6!3m5!1s0x390d4910ed68befb:0xd0b08081f548390!8m2!3d28.1910982!4d76.8151166!16s%2Fg%2F11ft0m5dw7?hl=en&entry=ttu&g_ep=EgoyMDI2MDMzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="location-box">
+            <div class="map-icon">📍</div>
+            <h3>Open Engineering Hub</h3>
+            <p>TAP TO VIEW ON GOOGLE MAPS</p>
+        </a>
+    </section>
+
+    <footer style="padding: 4rem 8% 8rem; border-top: 1px solid var(--border); background: #000; text-align: center;">
+        <h2 style="color: #fff; font-family: 'Space Grotesk'; font-size: 1.5rem;">STAR ELECTRICALS BHIWADI</h2>
+        <p style="color: var(--text-dim); margin-top: 1rem; font-size: 0.8rem;">
+            Alwar Bypass Rd, opposite Konark's Oasis Gate, <br>
+            Bhiwadi, Milakpur Goojar, Rajasthan 301019
+        </p>
+    </footer>
+
+    <div class="dock">
+        <a href="tel:9667505055" class="dock-item">📞 CALL NOW</a>
+        <div style="width: 1px; background: var(--border); height: 20px;"></div>
+        <a href="https://wa.me/919667505055" class="dock-item" style="color: #25D366;">💬 WHATSAPP</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
